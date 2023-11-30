@@ -1,7 +1,8 @@
 import { Forma } from "forma-embedded-view-sdk/auto";
 import { useEffect, useState } from "preact/hooks";
+import styles from "../styles.module.css";
 
-const CHRISTMAS_PALETT = ["#D11919", "#CC0000", "#800000", "#228B22", "#008000", "#006400"];
+const CHRISTMAS_PALETT = ["#D11919", "#CC0000", "#800000", "#4c984c", "#008000", "#006400"];
 
 function hexColorToRGB(color: string) {
   return [
@@ -19,14 +20,12 @@ const getColorArray = (triangleLength: number) => {
   );
   for (let i = 0; i < colorArray.length; i += 4) {
     colorArray.set(color, i);
-    console.log(colorArray);
   }
   return colorArray;
 };
 
-export default function SuperButton() {
+const ColourBuildings = () => {
   const [buildingPaths, setBuildingPaths] = useState<string[]>([]);
-  console.log("buildingPAths", buildingPaths);
   useEffect(() => {
     const fetchData = async () => {
       Forma.geometry.getPathsByCategory({ category: "building" }).then(setBuildingPaths);
@@ -35,7 +34,6 @@ export default function SuperButton() {
   }, []);
 
   const superClick = async () => {
-    console.log("click");
     buildingPaths.forEach(async (path) => {
       const position = await Forma.geometry.getTriangles({ path });
       const color = getColorArray(position.length);
@@ -45,9 +43,11 @@ export default function SuperButton() {
 
   return (
     <div class="row">
-      <weave-button variant={"solid"} onClick={superClick}>
-        Super button
-      </weave-button>
+      <button onClick={superClick} className={styles.christmasButton}>
+        Colour buildings
+      </button>
     </div>
   );
-}
+};
+
+export default ColourBuildings;
