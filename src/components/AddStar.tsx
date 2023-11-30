@@ -27,9 +27,9 @@ const getColorArray = (triangleLength: number) => {
 function AddStar() {
   const superClick = async () => {
     const starShape = new THREE.Shape();
-    starShape.moveTo(0, 2.5);
+    starShape.moveTo(0, 5);
     for (let i = 0; i < 10; i++) {
-      const radius = i % 2 === 0 ? 1 : 2.5;
+      const radius = i % 2 === 0 ? 2 : 5;
       const angle = (i / 10) * Math.PI * 2;
       const x = Math.cos(angle) * radius;
       const y = Math.sin(angle) * radius;
