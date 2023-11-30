@@ -11,12 +11,14 @@
     "prettier:write": "yarn prettier --write src"
   },
   "dependencies": {
+    "@types/three": "^0.158.3",
     "file-saver": "^2.0.5",
     "forma-embedded-view-sdk": "^0.24.3",
     "jszip": "3.10.1",
     "lodash": "^4.17.21",
     "luxon": "^3.4.3",
-    "preact": "^10.17.1"
+    "preact": "^10.17.1",
+    "three": "^0.158.0"
   },
   "devDependencies": {
     "@preact/preset-vite": "^2.5.0",
